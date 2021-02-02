@@ -1,43 +1,15 @@
-function MakeReadMe (answers) {
-    return ` 
-    # README.md Generator
-   README.md file will be generated from user input, Using Node.js. 
 
-   ${answers.projectTitle}
-
-   ## Description
-   ${answers.description}
-
-   ##Table of Content
-   ${answers.tableOfContents}
-
-   ### Installation
-   ${answers.installation}
-
-   ### Usage
-   ${answers.usage}
-
-   ### Built With
-   * [VScode](https://code.visualstudio.com/) 
-
-   ### Questions
-   ${ansers.questions}
-
-   ### License 
-   ${answers.license}
-
-   ### Contributors
-   ${answers.contributing}
-
-   ###
-
-
-
-
-
-
-
-
-    `
-
-}
+const axios = node("axios");
+function apiCall( username ) {
+  const queryUrl = `https://api.github.com/users/${username}`;
+  return axios
+  .get(queryUrl)
+  .then(function(response){   
+    const results = {
+        avatar_url: response.data.avatar_url,
+        email : (response.data.email) ? response.email : "my_email@github.com"
+    }
+    return results;
+  })
+};
+module.exports = apiCall;
