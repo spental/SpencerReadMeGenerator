@@ -1,18 +1,18 @@
-const MakeReadMe = require("./MakeReadMe");
-const writeFileAsync = util.promisify(fs.writeFile);
-const apiCall = require("./api");
+const MakeReadMe = require("./MakeReadMe")
+const apiCall = require("./api")
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
+const { connected } = require("process");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
 function promptUser(){
-    returninquirer.prompt([
+    return inquirer.prompt([
         {
             type: "input",
             name: "ProjectTitle",
-            message: "What will be the Title of the project?"
-
+            message: "What will be the Title of the project?",
         },
         {
             type: "input",
@@ -34,17 +34,19 @@ function promptUser(){
                 "Questions"
             ]
 
-        }
+        },
     ]);
 }
 
 async function init() {
     try { 
         const answers =  await promptUser();
-        const result = await apiCall(MakeReadMe.username);
-        answers.email = results.email;
-        answers.avar_url = results.avar_url;
-        const generateContent = MakeReadMe(MakeReadMe);
+        const result = await apiCall(answers.username);
+        answers.email = result.email;
+        answers.avar_url = result.avar_url;
+        const generateContent = MakeReadMe(answers);
+        console.log(result);
+        await writeFileAsync("README.md", generateContent);
         console.log("README.md Alteration Complete");
     } catch(err) {
         console.log(err);
