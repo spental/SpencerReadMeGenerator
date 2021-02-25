@@ -20,8 +20,7 @@ function MakeReadMe (answers) {
    ### Built With
    * [VScode](https://code.visualstudio.com/) 
 
-   ### Questions
-   ${ansers.questions}
+  
 
    ### License 
    ${answers.license}
@@ -39,7 +38,7 @@ function MakeReadMe (answers) {
    ### Avatar Image
    ${answers.avatar_url}
 
-    Copyright 2021 &copy;
+    Copyright 2021 ;
 
 `;
 }
