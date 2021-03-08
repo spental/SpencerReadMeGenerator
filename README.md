@@ -21,3 +21,5 @@ https://github.com/spental/SpencerReadMeGenerator
 
 https://drive.google.com/file/d/1j1seQBQprPKsFSKn-HF1fVqnYiqZcYM_/view
 
+- link to readme file in repo
+https://github.com/spental/SpencerReadMeGenerator/blob/main/generateREADME.md
