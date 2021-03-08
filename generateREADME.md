@@ -3,7 +3,7 @@
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
   # Project Title
-  sfasfsafsf
+  README.md Generator for Spental
 
   ## Table of contents
   + [Description](#description)
@@ -19,23 +19,23 @@
   + [Questions](#questions)
 
   ## Description
-  afsfafsf
+  simple readme generator, helps create quick and neat readme files for projects.
 
   ## Instructions
-  affasfsf
+  run node index in terminal, follow prompts. 
 
   ## Usage
-  asfsaffa
+  
 
   ## License
   This application uses the MIT license.
 
   ## Contributors
-  asfasafsaf
+  spental
 
   ## Questions
-  afsafsafaf
+  Spental
   <br />
   You can contact me on my GitHub account at (https://github.com/spental)
   <br />
-  You may can reach me by sending me an email at codekingkyle@gmail.com 
+  You may can reach me by sending me an email at kyletalbott69@gmail.com 
