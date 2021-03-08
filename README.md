@@ -21,4 +21,3 @@ https://github.com/spental/SpencerReadMeGenerator
 
 https://drive.google.com/file/d/1j1seQBQprPKsFSKn-HF1fVqnYiqZcYM_/view
 
-https://drive.google.com/drive/u/1/my-drive
