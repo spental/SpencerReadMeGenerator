@@ -1,41 +1,20 @@
- 
-   # README.md Generator
-   README.md file will be generated from user input, Using Node.js. 
+# crispy-computing-machine
 
-   Practice
+A readme.md generator
 
-   ## Description
-   this is a practice run for the readme.md generator
+##Technology
 
-   ##Table of Content
-   Project Title,Description
+This application was created using node.js and different npm modules to create a readme.md generator to use for any project as is currently done for all projects that i have
+submitted .
 
-   ### Installation
-   undefined
+##Description
 
-   ### Usage
-   spental hw
+The app is invoked in the command line and than returns a series of questions in the terminal that the user must answer to generate an accurate readme. There are also choices
+for which license the user would like to use and an icon is generated after the choice and added to the top of the readme. 
 
-   ### Built With
-   * [VScode](https://code.visualstudio.com/) 
+##Link
 
-  
-
-   ### License 
-   MIT License
-
-   ### Contributors
-   spental
-
-   ### Acknowledgments 
-
-   #### Badges 
-
-   ### GitHub Username
-   my_email@github.com
-   
-   ### Avatar Image
-   undefined
-
-    Copyright 2021 ;
+This is the link to my repo where you can find the code for the app
+https://github.com/spental/SpencerReadMeGenerator
+##Demo
 

@@ -1,103 +1,111 @@
-
-
-
+const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-const inquirer = require("inquirer");
-const MakeReadMe = require("./MakeReadMe")
-const apiCall = require("./api")
 const writeFileAsync = util.promisify(fs.writeFile);
 
+console.log("Hello,Get ready to make an awesome README.md file!");
 
-
-function promptUser(){
-    return inquirer.prompt([
-        {
-            type: "checkbox",
-            message: "Select the contents of your Table of Contents",
-            name: "tableOfContents",
-            choices: [
-                "Project Title",
-                "Description",
-                "Installation",
-                "Usage",
-                "License",
-                "Contributing",
-                "Tests",
-                "Questions"
-            ]
-        },
-        {
+function promptUser() {
+    return inquirer.prompt([{
             type: "input",
+            message: "What is your Project title?",
             name: "projectTitle",
-            message: "What is the project title?",
         },
         {
             type: "input",
+            message: "What is your GitHub user name?",
+            name: "userName",
+        },
+        {
+            type: "input",
+            message: "What is the description of your project?",
             name: "description",
-            message: "Write a brief description of your project"
         },
-        
         {
             type: "input",
+            message: "Enter the installation instructions for your project",
+            name: "instructions",
+        },
+        {
+            type: "input",
+            message: "Enter your application usage information",
             name: "usage",
-            message: "What is this project usage for?"
+        },
+        {
+            type: "input",
+            message: "Contributors to this project",
+            name: "contributions",
         },
         {
             type: "list",
+            message: "Please choose a license for your project",
             name: "license",
-            message: "Chose the appropiate license for this project",
             choices: [
-                "Apache License 2.0",
+                "Apache",
+                "MIT",
                 "Academic Free License v3.0",
-                "GNU General Public License v3.0",
-                "ISC",
-                "MIT License",
-                "Mozilla Public License 2.0",
                 "Open Software License 3.0",
-                "The Unlicense"
-            ]
+            ],
         },
         {
             type: "input",
-            name: "contributing",
-            message: "Who are the contributors of this projects?"
+            message: "What is your email address?",
+            name: "email",
         },
-        {
-            type: "input",
-            name: "tests",
-            message: "Is there a Test included"
-        },
-        {
-            type: "input",
-            name: "acknowledgments",
-            message: "Is anyone to be acknowledge?"
-        },
-        {
-            type: "input",
-            name: "questions",
-            message: "What do I do if I have an issue?"
-        },
-        {
-            type: "input",
-            name: "username",
-            message: "Please enter your GitHub username"
-        }
     ]);
-} 
-
-async function init() {
-    try { 
-        const answers =  await promptUser();
-        const result = await apiCall(answers.username);
-        answers.email = result.email;
-        answers.avar_url = result.avar_url;
-        const generateContent = MakeReadMe(answers);
-        console.log(result);
-        await writeFileAsync("README.md", generateContent);
-        console.log("README.md Alteration Complete");
-    } catch(err) {
-        console.log(err);
-    }
 }
-init();
+
+function createMarkDown(answers) {
+    return `
+
+  ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
+
+  # Project Title
+  ${answers.projectTitle}
+
+  ## Table of contents
+  + [Description](#description)
+
+  + [Instructions](#instructions)
+
+  + [Usage](#usage)
+
+  + [Contributions](#contributions)
+
+  + [License](#license)
+
+  + [Questions](#questions)
+
+  ## Description
+  ${answers.description}
+
+  ## Instructions
+  ${answers.instructions}
+
+  ## Usage
+  ${answers.usage}
+
+  ## License
+  This application uses the ${answers.license} license.
+
+  ## Contributors
+  ${answers.contributions}
+
+  ## Questions
+  ${answers.userName}
+  <br />
+  You can contact me on my GitHub account at (https://github.com/spental)
+  <br />
+  You may can reach me by sending me an email at ${answers.email} `;
+}
+promptUser()
+    .then(function(answers) {
+        const md = createMarkDown(answers);
+        return writeFileAsync("generateREADME.MD", md);
+    })
+    .then(function() {
+        console.log("Success");
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
